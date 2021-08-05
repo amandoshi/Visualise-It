@@ -1,0 +1,26 @@
+{
+  "name": "visualise-it",
+  "version": "1.0.0",
+  "description": "Computer Science A-level Coursework",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandoshi/Visualise-It.git"
+  },
+  "author": "Aman Doshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amandoshi/Visualise-It/issues"
+  },
+  "homepage": "https://github.com/amandoshi/Visualise-It#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.12",
+    "serve-favicon": "^2.5.0"
+  }
+}
