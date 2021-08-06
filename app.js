@@ -9,6 +9,9 @@ const app = express();
 // register view engine
 app.set("view engine", "ejs");
 
+// initialise directory for static files
+app.use(express.static(path.join(__dirname, "public")));
+
 // initialise favicon
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.png")));
 
