@@ -6,17 +6,18 @@ const path = require("path");
 // initialise express app
 const app = express();
 
-// register view engine
+// view engine
 app.set("view engine", "ejs");
 
-// initialise directory for static files
+// directory for static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// initialise favicon
+// favicon
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.png")));
 
 // define routes
 app.use("/", require("./routes/homepage"));
+app.use("/input", require("./routes/input"));
 
 // 404 route
 app.use("*", require("./routes/404"));
