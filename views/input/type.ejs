@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../partials/head") %>
+		<% title = "Input Graph - Type" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/type.css">
+	</head>
+	<body>
+		<%- include("../partials/navbar") %>
+
+		<!-- INPUT TYPES -->
+		<div class="input_containers">
+			<!-- CUSTOM GRAPH -->
+			<div class="container">
+				<p class="title">Custom Graph</p>
+				<p class="information">
+					Input a custom graph via an edge list, adjacency list, or adjacency
+					matrix. Nodes take on custom names in any of the input methods.<br /><br />
+
+					The properties of the graph (weighted or unweighted, directed or
+					undirected) are selectable. Weights can only take on non-zero integer
+					values. Graphs cannot contain self-pointing edges or have multiple
+					edges between to 2 nodes.
+				</p>
+				<p class="link"><a href="input/custom">Select</a></p>
+			</div>
+			<!-- RANDOM GRAPH -->
+			<div class="container">
+				<p class="title">Random Graph</p>
+				<p class="information">
+					Generate a random graph with a selected number of nodes (between 5 to
+					20). Nodes cannot take on a custom name. Instead, nodes are assigned 
+					numeric values in ascending order (from 1).<br /><br />
+
+					The properties of the graph (weighted or unweighted, directed or undirected)
+					are selectable. Weights can only take on non-zero integer values and are
+					randomised between a selected range.
+				</p>
+				<p class="link"><a href="input/random">Select</a></p>
+			</div>
+			<!-- UPLOAD GRAPH -->
+			<div class="container">
+				<p class="title">Upload Graph</p>
+				<p class="information">
+					Upload a CSV file containing an adjacency matrix. Nodes can take on custom
+					names.<br /><br />
+
+					The properties of the graph (weighted or unweighted, directed or
+					undirected) are selectable. Weights can only take on non-zero integer
+					values. Graphs cannot contain self-pointing edges or have multiple
+					edges between to 2 nodes.
+				</p>
+				<p class="link"><a href="input/upload">Select</a></p>
+			</div>
+		</div>
+	</body>
+</html>
