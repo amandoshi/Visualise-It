@@ -4,7 +4,7 @@ const router = express.Router();
 
 // homepage - GET
 router.get("/", (req, res) => {
-	res.render("homepage/index.ejs");
+	res.render("homepage/homepage.ejs");
 });
 
 // export routes
