@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../../partials/head") %> <% title = "Custom Graph - Type" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/custom/type.css" />
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/input/custom/type.js"></script>
+	</head>
+	<body>
+		<%- include("../../partials/navbar") %>
+
+		<!-- GRAPH TYPE -->
+		<div class="type_toggles">
+			<!-- DIRECTED -->
+			<div class="toggle">
+				<p class="first" id="undirected">Undirected</p>
+				<p class="second" id="directed">Directed</p>
+			</div>
+
+			<!-- WEIGHTED -->
+			<div class="toggle">
+				<p class="first" id="unweighted">Unweighted</p>
+				<p class="second" id="weighted">Weighted</p>
+			</div>
+		</div>
+
+		<!-- INPUT TYPES -->
+		<div class="input_containers">
+			<!-- EDGE LIST -->
+			<div class="container">
+				<p class="title">Edge List</p>
+				<p class="information">
+					Edge lists are a construct of graph connections in a two-column, 2d
+					array (a 3rd column if graph is weighted).<br /><br />
+
+					Row structure (unweighted): {edge1} {edge2}<br />
+					Row structure (weighted): {edge1} {edge2} {weight}<br /><br />
+
+					Example 1 (unweighted): apple banana<br />
+					Example 2 (weighted): apple banana 3
+				</p>
+				<p class="link"><a href="/input/custom/edgeList">Select</a></p>
+			</div>
+
+			<!-- ADJACENCY LIST -->
+			<div class="container">
+				<p class="title">Adjacency List</p>
+				<p class="information">
+					Adjacency lists represent graphs as 3d arrays, where the index of each
+					row is a particular node and each row stores all adjacent nodes in an
+					array (2d if weighted graph).<br /><br />
+
+					Row structure (unweighted): {node-1} {node-2} ...<br />
+					Row structure (weighted): {node-1} {weight-1}, ...<br /><br />
+
+					Example 1 (unweighted): apple banana<br />
+					Example 2 (weighted): apple 3, banana 5
+				</p>
+				<p class="link"><a href="/input/custom/adjacencyList">Select</a></p>
+			</div>
+
+			<!-- ADJACENCY MATRIX -->
+			<div class="container">
+				<p class="title">Adjacency Matrix</p>
+				<p class="information">
+					Adjacency matrix represents graphs as a 2d matrix. Non-zero cell value
+					indicates edge between indexes of cell and weight of edge (if weighted
+					graph).<br /><br />
+
+					Example 1 (unweighted):<br />
+					0 1 0<br />
+					1 0 1<br />
+					1 0 0<br /><br />
+
+					Example 2 (weighted):<br />
+					0 1 5<br />
+					2 0 1<br />
+					5 0 0<br />
+				</p>
+				<p class="link"><a href="/input/custom/adjacencyMatrix">Select</a></p>
+			</div>
+		</div>
+	</body>
+</html>

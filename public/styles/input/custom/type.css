@@ -1,0 +1,99 @@
+/* TYPE TOGGLES */
+.type_toggles {
+	display: flex;
+	justify-content: space-between;
+	padding: 10vh 25% 0 25%;
+}
+
+/* TOGGLE */
+.toggle {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+}
+
+.toggle p {
+	background-color: #f5f5f5;
+	border: 1px solid #a5a5a5;
+	cursor: pointer;
+
+	font-family: "arial", "sans-serif";
+	font-size: 16px;
+
+	margin: 0;
+	padding: 25px;
+	text-align: center;
+	transition: background-color 0.3s;
+	width: 100px;
+}
+
+.toggle p:hover {
+	background-color: #e4e4e4;
+}
+
+.toggle p.first {
+	border-radius: 5px 0 0 5px;
+	border-right: 0;
+}
+
+.toggle p.second {
+	border-radius: 0 5px 5px 0;
+}
+
+.toggle p.selected {
+	background-color: #a5a5a5;
+}
+
+/* INPUT CONTAINERS */
+.input_containers {
+	display: flex;
+	justify-content: space-between;
+	padding: 10vh 10% 0 10%;
+}
+
+/* CONTAINER */
+.container {
+	background-color: #f5f5f5;
+	border: 1px solid #a5a5a5;
+	border-radius: 5px;
+	height: 350px;
+	position: relative;
+	width: 30%;
+}
+
+.container p {
+	font-family: "arial", "sans-serif";
+}
+
+.container p.title {
+	border-bottom: 1px solid #7e7e7e;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0 0 20px 0;
+	text-align: center;
+}
+
+.container p.information {
+	font-size: 14px;
+	padding: 0 10px;
+	text-align: justify;
+}
+
+.container p.link {
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+.container a {
+	background-color: #0088a9;
+	border-radius: 5px;
+	color: #fff;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+.container a:hover {
+	background-color: #01657e;
+}
