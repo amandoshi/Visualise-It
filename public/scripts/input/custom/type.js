@@ -27,6 +27,34 @@ function setToggle(state, type) {
 	}
 }
 
+function postToUrl(data, url) {
+	// create form element
+	let form = document.createElement("form");
+	form.method = "post";
+	form.action = url;
+
+	// add data to form
+	for (const key in data) {
+		// create input element
+		let input = document.createElement("input");
+		input.type = "hidden";
+		input.name = key;
+		input.value = data[key];
+
+		// add input to form
+		form.appendChild(input);
+	}
+
+	// send data
+	document.body.appendChild(form);
+	form.submit();
+}
+
+function submit(type) {
+	const data = { directed, type, weighted };
+	postToUrl(data, "/input/custom");
+}
+
 window.onload = () => {
 	// default values
 	directed = false;
