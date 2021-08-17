@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../../partials/head") %> <% title = "Edge List" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/custom/edgeList.css">
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/input/custom/edgeList.js"></script>
+		<script>
+			let weighted;
+			let directed;
+
+			window.onload = () => {
+			    directed = "<%- directed %>" === "true";
+				weighted = "<%- weighted %>" === "true";
+
+				fillLineCount();
+			};
+		</script>
+	</head>
+	<body>
+		<%- include("../../partials/navbar") %>
+
+		<!-- EDGE LIST -->
+		<div class="elements">
+			<div class="container">
+				<!-- LINE NUMBER -->
+				<textarea 
+				class="line_number"
+				cols="5"
+				id="lineNumber"
+				readonly
+				rows="25"
+				wrap="off"
+				></textarea>
+				
+				<!-- INPUT -->
+				<textarea
+					class="edge_list"
+					cols="100"
+					id="edgeList"
+					oninput="updateLineCount(this)"
+					onscroll="syncScroll()"
+					rows="25"
+					spellcheck="false"
+					wrap="off"
+				></textarea>
+			</div>
+
+			<div class="submit">
+				<p><a href="javascript:func()">Visualise</a></p>
+			</div>
+		</div>
+	</body>
+</html>
