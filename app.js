@@ -2,6 +2,7 @@
 const express = require("express");
 const favicon = require("serve-favicon");
 const path = require("path");
+const session = require("express-session");
 
 // initialise express app
 const app = express();
@@ -20,6 +21,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // prase JSON bodies (as sent by API clients)
 app.use(express.json());
+
+// express-sessions
+app.use(
+	session({
+		secret: "secret-key",
+		resave: false,
+		saveUninitialized: false,
+	})
+);
 
 // define routes
 app.use("/", require("./routes/homepage"));
