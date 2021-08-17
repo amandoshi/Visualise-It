@@ -15,6 +15,12 @@ app.use(express.static(path.join(__dirname, "public")));
 // favicon
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.png")));
 
+// parse HTML form
+app.use(express.urlencoded({ extended: true }));
+
+// prase JSON bodies (as sent by API clients)
+app.use(express.json());
+
 // define routes
 app.use("/", require("./routes/homepage"));
 app.use("/input", require("./routes/input"));
