@@ -31,6 +31,12 @@ app.use(
 	})
 );
 
+// sweet alerts - allow public access
+app.use(
+	"/swal",
+	express.static(path.join(__dirname, "/node_modules/sweetalert2"))
+);
+
 // define routes
 app.use("/", require("./routes/homepage"));
 app.use("/input", require("./routes/input"));
