@@ -30,5 +30,10 @@ router.get("/custom/edgeList", (req, res) => {
 	});
 });
 
+// upload
+router.get("/upload", (req, res) => {
+	res.render("input/upload/csv.ejs");
+});
+
 // export routes
 module.exports = router;
