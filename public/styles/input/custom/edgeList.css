@@ -55,6 +55,10 @@
 	transition: background-color 0.4s;
 }
 
+.submit a:hover {
+	background-color: #01657e;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
 	height: 14px;
