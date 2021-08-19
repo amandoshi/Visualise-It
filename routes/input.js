@@ -30,7 +30,12 @@ router.get("/custom/edgeList", (req, res) => {
 	});
 });
 
-// upload
+// random - GET
+router.get("/random", (req, res) => {
+	res.render("input/random/random.ejs");
+});
+
+// upload - GET
 router.get("/upload", (req, res) => {
 	res.render("input/upload/csv.ejs");
 });
