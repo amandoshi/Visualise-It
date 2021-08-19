@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../../partials/head") %> <% title = "Random Graph" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/random/random.css" />
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/input/random/random.js"></script>
+	</head>
+	<body>
+		<%- include("../../partials/navbar") %>
+
+		<div class="container">
+			<p class="title">Graph Properties</p>
+
+			<!-- GRAPH TYPE -->
+			<div class="toggle_container">
+				<div class="toggle">
+					<p class="first" id="undirected">Undirected</p>
+					<p class="second" id="directed">Directed</p>
+				</div>
+				<div class="toggle">
+					<p class="first" id="unweighted">Unweighted</p>
+					<p class="second" id="weighted">Weighted</p>
+				</div>
+			</div>
+
+			<!-- NODE COUNT -->
+			<div class="slider_container">
+				<p id="sliderValue">15 Nodes</p>
+				<input
+					class="slider"
+					id="slider"
+					max="25"
+					min="5"
+					type="range"
+					value="15"
+				/>
+			</div>
+
+			<p class="link"><a href="#">Visualise</a></p>
+		</div>
+	</body>
+</html>

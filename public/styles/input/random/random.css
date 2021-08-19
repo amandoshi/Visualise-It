@@ -1,0 +1,128 @@
+/* CONTAINER */
+.container {
+	background-color: #f3f3f3;
+	border: 1px solid #a5a5a5;
+	border-radius: 5px;
+	height: 350px;
+	margin: auto;
+	margin-top: 20vh;
+	position: relative;
+	width: 800px;
+}
+
+.container p {
+	font-family: arial, sans-serif;
+	text-align: center;
+}
+
+/* CONTAINER TITLE */
+.container p.title {
+	border-bottom: 1px solid #7e7e7e;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0 0 20px 0;
+}
+
+/* GRAPH TYPE */
+.toggle_container {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10%;
+}
+
+.toggle {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+}
+
+.toggle p {
+	background-color: #f5f5f5;
+	border: 1px solid #bebebe;
+	cursor: pointer;
+	font-size: 15px;
+	margin: 0;
+	padding: 25px;
+	transition: background-color 0.3s;
+	width: 100px;
+}
+
+.toggle p:hover {
+	background-color: #e4e4e4;
+}
+
+.toggle p.first {
+	border-right: 0;
+	border-radius: 5px 0 0 5px;
+}
+
+.toggle p.second {
+	border-radius: 0 5px 5px 0;
+}
+
+.toggle p.selected {
+	background-color: #a5a5a5;
+}
+
+/* NODE COUNT CONTAINER */
+.slider_container {
+	margin-top: 5vh;
+	text-align: center;
+}
+
+/* SLIDER VALUE */
+.slider_container p {
+	color: #474747;
+	font-size: 17px;
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+.slider {
+	appearance: none;
+	background-color: #e0e0e0;
+	border-radius: 10px;
+	height: 10px;
+	opacity: 0.7;
+	outline: 0;
+	transition: opacity 0.2s;
+	width: 50%;
+}
+
+.slider:hover {
+	opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	background: #a8a8a8;
+	border-radius: 5px;
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+}
+
+/* LINK */
+.container p.link {
+	bottom: 0;
+	position: absolute;
+	padding-bottom: 10px;
+	width: 100%;
+}
+
+.container a {
+	background-color: #0088a9;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	outline: 0;
+	padding: 8px 20px;
+	text-decoration: none;
+	transition: background-color 0.4s;
+}
+
+.container a:hover {
+	background-color: #01657e;
+}
