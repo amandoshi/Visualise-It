@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../../partials/head") %> <% title = "Adjacency List" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/custom/adjacencyList.css" />
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/input/custom/adjacencyList.js"></script>
+		<script>
+			let nodeNames;
+
+			window.onload = () => {
+				nodeNames = JSON.parse(`<%- nodeNames %>`);
+			};
+		</script>
+	</head>
+	<body>
+		<%- include("../../partials/navbar") %>
+
+		<%# NODE NAMES -%> 
+		<% nodeNames = JSON.parse(nodeNames) %> 
+
+        <!-- ADJACENCY LIST -->
+        <div class="table">
+            <% for (let i = 0; i < nodeNames.length; i++) { -%> 
+                <%# CONSTRUCT ROW CLASS %> 
+                <% let rowClass = `row ${i}` %> 
+                <% if (i == 0) { %> 
+                    <% rowClass += " first" %>
+                <% } else if (i == nodeNames.length - 1) { %> 
+                    <% rowClass += " last" %> 
+                <% } %> 
+                
+                <%# ROW %> 
+                <div class="<%- rowClass %>">
+                    <p class="column 1"><%- nodeNames[i] %></p>
+				    <input class="column 2" type="text" />
+                </div>
+            <% } %> 
+        </div>
+
+        <!-- Submit -->
+        <p class="link"><a href="#">Visualise</a></p>
+	</body>
+</html>
