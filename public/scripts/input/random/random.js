@@ -80,6 +80,7 @@ function setupSlider() {
 }
 
 window.onload = () => {
+	setupNavbar();
 	setupToggle();
 	setupSlider();
 };

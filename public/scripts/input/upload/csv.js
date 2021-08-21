@@ -45,6 +45,8 @@ function alertError(message) {
 }
 
 window.onload = () => {
+	setupNavbar();
+
 	file = document.getElementById("file");
 	file.addEventListener("change", updateFileName);
 };

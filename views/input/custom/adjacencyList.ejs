@@ -11,11 +11,13 @@
 		<link rel="stylesheet" href="/styles/input/custom/adjacencyList.css" />
 
 		<!-- SCRIPTS -->
+		<script src="/scripts/partials/navbar.js"></script>
 		<script src="/scripts/input/custom/adjacencyList.js"></script>
 		<script>
 			let nodeNames;
 
 			window.onload = () => {
+				setupNavbar();
 				nodeNames = JSON.parse(`<%- nodeNames %>`);
 			};
 		</script>
@@ -30,7 +32,7 @@
         <div class="table">
             <% for (let i = 0; i < nodeNames.length; i++) { -%> 
                 <%# CONSTRUCT ROW CLASS %> 
-                <% let rowClass = `row ${i}` %> 
+				<% let rowClass = "row" %> 
                 <% if (i == 0) { %> 
                     <% rowClass += " first" %>
                 <% } else if (i == nodeNames.length - 1) { %> 

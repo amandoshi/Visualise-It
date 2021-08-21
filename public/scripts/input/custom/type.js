@@ -56,6 +56,8 @@ function submit(type) {
 }
 
 window.onload = () => {
+	setupNavbar();
+
 	// default values
 	directed = false;
 	weighted = false;

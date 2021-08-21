@@ -3,13 +3,20 @@ body {
 	margin: 0;
 }
 
+/* WRAPPER */
+.navbar_wrapper {
+	left: 0;
+	position: sticky;
+	width: 0;
+}
+
 /* NAVBAR */
 .navbar {
 	align-items: center;
 	background-color: #383838;
 	display: flex;
 	justify-content: space-between;
-	padding: 0 10%;
+	width: 100vw;
 }
 
 /* LOGO */
@@ -17,6 +24,7 @@ body {
 	align-items: center;
 	cursor: pointer;
 	display: flex;
+	margin-left: 10%;
 }
 
 .navbar_logo:hover > p {
@@ -68,6 +76,7 @@ body {
 	font-family: "arial", "sans-serif";
 	font-size: 16px;
 	font-weight: 500;
+	margin-right: 10%;
 	text-align: center;
 	width: 15%;
 }

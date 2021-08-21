@@ -11,13 +11,16 @@
 		<link rel="stylesheet" href="/styles/input/custom/edgeList.css">
 
 		<!-- SCRIPTS -->
-		<script src="/scripts/input/custom/edgeList.js"></script>
 		<script src="/swal/dist/sweetalert2.all.min.js"></script>
+		<script src="/scripts/partials/navbar.js"></script>
+		<script src="/scripts/input/custom/edgeList.js"></script>
 		<script>
 			let weighted;
 			let directed;
 
 			window.onload = () => {
+				setupNavbar();
+
 			    directed = "<%- directed %>" === "true";
 				weighted = "<%- weighted %>" === "true";
 
