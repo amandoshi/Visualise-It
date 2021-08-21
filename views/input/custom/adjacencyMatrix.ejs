@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../../partials/head") %> <% title = " Adjacency Matrix" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/input/custom/adjacencyMatrix.css">
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/partials/navbar.js"></script>
+		<script src="/scripts/input/custom/adjacencyMatrix.js"></script>
+		<script>
+			let nodeNames;
+			let directed;
+
+			window.onload = () => {
+				nodeNames = JSON.parse(`<%- nodeNames %>`);
+				directed = `<%- directed %>` == "true";
+
+				setupNavbar();
+				setupMatrix();
+			}
+		</script>
+	</head>
+	<body>
+		<%- include("../../partials/navbar") %>
+
+		<div class="table" id="table"></div>
+	</body>
+</html>

@@ -1,0 +1,127 @@
+/* MATRIX */
+.table {
+	/* background-color: bisque; */
+	margin: 10vh auto;
+	padding: 0 10vh;
+}
+
+/* ROW */
+.row {
+	display: flex;
+}
+
+/* EDGES */
+.row.first .column {
+	border-top: 1px solid #a5a5a5;
+}
+
+.column.last {
+	border-right: 1px solid #a5a5a5;
+}
+
+.row.last .column {
+	border-bottom: 1px solid #a5a5a5;
+}
+
+.column.first {
+	border-left: 1px solid #a5a5a5;
+}
+
+/* CORNERS */
+.row.first .column.first {
+	border-radius: 5px 0 0 0;
+}
+
+.row.first .column.last {
+	border-radius: 0 5px 0 0;
+}
+
+.row.last .column.last {
+	border-radius: 0 0 5px 0;
+}
+
+.row.last .column.first {
+	border-radius: 0 0 0 5px;
+}
+
+/* CELL */
+.column {
+	width: 140px;
+}
+
+/* NODE NAME CELL */
+p.column {
+	background-color: #e4e4e4;
+	border: 1px solid #bebebe;
+	border-left: 0;
+	border-top: 0;
+
+	font-family: monospace, monospace;
+	font-size: 18px;
+	color: #2b2b2b;
+
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+/* INPUT CELL */
+input.column {
+	background-color: #f1f1f1;
+	border: 1px dashed #bebebe;
+	border-left: 0;
+	border-top: 0;
+
+	color: #4e4e4e;
+	font-family: monospace, monospace;
+	font-size: 20px;
+
+	outline: 0;
+	padding: 0;
+	text-align: center;
+}
+
+input.column::placeholder {
+	color: #bdbdbd;
+}
+
+input.column::-webkit-outer-spin-button,
+input.column::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* DISABLED CELL */
+input.disabled {
+	background-color: #dadada;
+	cursor: default;
+}
+
+/* DIRECTED CELL */
+input.copy {
+	background-color: #a0a0a0;
+	cursor: default;
+}
+
+/* LINK */
+.link {
+	padding: 20px;
+	text-align: center;
+}
+
+.link a {
+	background-color: #0088a9;
+	border-radius: 5px;
+
+	font-family: arial, sans-serif;
+	font-size: 18px;
+	color: #fff;
+
+	padding: 8px 20px;
+	text-decoration: none;
+	transition: background-color 0.4s;
+}
+
+.link a:hover {
+	background-color: #01657e;
+}
