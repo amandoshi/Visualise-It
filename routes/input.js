@@ -30,6 +30,51 @@ router.get("/custom/edgeList", (req, res) => {
 	});
 });
 
+// custom:adjacency list - GET
+router.get("/custom/adjacencyList", (req, res) => {
+	res.render("input/custom/nodeName.ejs", {
+		postUrl: "/input/custom/adjacencyList",
+	});
+});
+
+// custom:adjacency list - POST
+router.post("/custom/adjacencyList", (req, res) => {
+	// store node names in sessions
+	req.session.nodeNames = req.body.names;
+
+	res.redirect("/input/custom/adjacencyList/graph");
+});
+
+// custom:adjacency list:graph - GET
+router.get("/custom/adjacencyList/graph", (req, res) => {
+	res.render("input/custom/adjacencyList.ejs", {
+		nodeNames: req.session.nodeNames,
+	});
+});
+
+// custom:adjacency matrix - GET
+router.get("/custom/adjacencyMatrix", (req, res) => {
+	res.render("input/custom/nodeName.ejs", {
+		postUrl: "/input/custom/adjacencyMatrix",
+	});
+});
+
+// custom:adjacency matrix - POST
+router.post("/custom/adjacencyMatrix", (req, res) => {
+	// store node names in sessions
+	req.session.nodeNames = req.body.names;
+
+	res.redirect("/input/custom/adjacencyMatrix/graph");
+});
+
+// custom:adjacency matrix:graph - GET
+router.get("/custom/adjacencyMatrix/graph", (req, res) => {
+	res.render("input/custom/adjacencyMatrix", {
+		directed: req.session.directed,
+		nodeNames: req.session.nodeNames,
+	});
+});
+
 // random - GET
 router.get("/random", (req, res) => {
 	res.render("input/random/random.ejs");
