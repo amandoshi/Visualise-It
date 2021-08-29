@@ -14,12 +14,7 @@
 		<script src="/scripts/partials/navbar.js"></script>
 		<script src="/scripts/input/custom/adjacencyList.js"></script>
 		<script>
-			let nodeNames;
-
-			window.onload = () => {
-				setupNavbar();
-				nodeNames = JSON.parse(`<%- nodeNames %>`);
-			};
+			let nodeNames = JSON.parse(`<%- nodeNames %>`);
 		</script>
 	</head>
 	<body>

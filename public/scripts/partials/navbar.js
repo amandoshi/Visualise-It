@@ -21,3 +21,5 @@ function setupNavbar() {
 	updateNavbarWidth();
 	window.addEventListener("resize", updateNavbarWidth);
 }
+
+window.addEventListener("load", setupNavbar);

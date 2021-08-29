@@ -15,17 +15,8 @@
 		<script src="/scripts/partials/navbar.js"></script>
 		<script src="/scripts/input/custom/edgeList.js"></script>
 		<script>
-			let weighted;
-			let directed;
-
-			window.onload = () => {
-				setupNavbar();
-
-			    directed = "<%- directed %>" === "true";
-				weighted = "<%- weighted %>" === "true";
-
-				fillLineCount();
-			};
+			let directed = "<%- directed %>" === "true";
+			let weighted = "<%- weighted %>" === "true";
 		</script>
 	</head>
 	<body>

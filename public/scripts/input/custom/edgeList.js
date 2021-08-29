@@ -41,3 +41,14 @@ function syncScroll() {
 	// sync text areas' scroll
 	lineObject.scrollTop = inputObject.scrollTop;
 }
+
+function submit() {
+	Swal.fire({
+		confirmButtonColor: "#0088a9",
+		icon: "error",
+		text: "Something went wrong...",
+		title: "An error occured",
+	});
+}
+
+window.addEventListener("load", fillLineCount);

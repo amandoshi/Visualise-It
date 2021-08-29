@@ -106,3 +106,5 @@ function postToUrl(data, url) {
 	document.body.appendChild(form);
 	form.submit();
 }
+
+window.addEventListener("load", fillLineCount);

@@ -128,3 +128,5 @@ function cascadeInput(inputObject) {
 	targetId = inputObject.id.split("-").reverse().join("-");
 	document.getElementById(targetId).value = inputObject.value;
 }
+
+window.addEventListener("load", setupMatrix);
