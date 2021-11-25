@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<!-- HEAD -->
-		<%- include("../../partials/head") %> <% title = "Adjacency List" %>
+		<%- include("../../partials/head") %>
+		<% title = "Adjacency List" %>
 
 		<title><%- title %></title>
 
@@ -11,38 +12,31 @@
 		<link rel="stylesheet" href="/styles/input/custom/adjacencyList.css" />
 
 		<!-- SCRIPTS -->
+		<script src="/swal/dist/sweetalert2.all.min.js"></script>
 		<script src="/scripts/partials/navbar.js"></script>
+		<script src="/scripts/partials/essentials.js"></script>
+		<script src="/scripts/dataStructures/graph.js"></script>
 		<script src="/scripts/input/custom/adjacencyList.js"></script>
 		<script>
-			let nodeNames = JSON.parse(`<%- nodeNames %>`);
+			const directed = JSON.parse("<%- directed %>");
+			const nodeNames = JSON.parse(`<%- nodeNames %>`);
+			const weighted = JSON.parse("<%- weighted %>");
 		</script>
 	</head>
 	<body>
+		<!-- NAVBAR -->
 		<%- include("../../partials/navbar") %>
 
-		<%# NODE NAMES -%> 
-		<% nodeNames = JSON.parse(nodeNames) %> 
+		<!-- INFORMATION -->
+		<div class="information">
+			<p>Unweighted row structure: {node 1} {node 2} {node 3} ...</p>
+			<p>Example: apple banana lemon orange</p>
+			<br>
+			<p>Weighted row structure: {node 1} {weight 1}, {node 2} {weight 2}, ...</p>
+			<p>Example: apple 2, banana 3, lemon 1, orange 6</p>
+		</div>
 
         <!-- ADJACENCY LIST -->
-        <div class="table">
-            <% for (let i = 0; i < nodeNames.length; i++) { -%> 
-                <%# CONSTRUCT ROW CLASS %> 
-				<% let rowClass = "row" %> 
-                <% if (i == 0) { %> 
-                    <% rowClass += " first" %>
-                <% } else if (i == nodeNames.length - 1) { %> 
-                    <% rowClass += " last" %> 
-                <% } %> 
-                
-                <%# ROW %> 
-                <div class="<%- rowClass %>">
-                    <p class="column 1"><%- nodeNames[i] %></p>
-				    <input class="column 2" type="text" />
-                </div>
-            <% } %> 
-        </div>
-
-        <!-- Submit -->
-        <p class="link"><a href="#">Visualise</a></p>
+        <div id="adjacencyTable" class="table"></div>
 	</body>
 </html>
