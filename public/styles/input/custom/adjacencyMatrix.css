@@ -1,6 +1,5 @@
 /* MATRIX */
 .table {
-	/* background-color: bisque; */
 	margin: 10vh auto;
 	padding: 0 10vh;
 }
@@ -124,4 +123,21 @@ input.copy {
 
 .link a:hover {
 	background-color: #01657e;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+	height: 14px;
+	width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-clip: padding-box;
+	background-color: #aaaaaa;
+	border: 4px solid rgba(0, 0, 0, 0);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+	background: rgba(0, 0, 0, 0);
 }
