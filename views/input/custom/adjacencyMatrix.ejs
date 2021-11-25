@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<!-- HEAD -->
-		<%- include("../../partials/head") %> <% title = " Adjacency Matrix" %>
+		<%- include("../../partials/head") %>
+		<% title = " Adjacency Matrix" %>
 
 		<title><%- title %></title>
 
@@ -11,16 +12,21 @@
 		<link rel="stylesheet" href="/styles/input/custom/adjacencyMatrix.css">
 
 		<!-- SCRIPTS -->
+		<script src="/swal/dist/sweetalert2.all.min.js"></script>
 		<script src="/scripts/partials/navbar.js"></script>
+		<script src="/scripts/partials/essentials.js"></script>
 		<script src="/scripts/input/custom/adjacencyMatrix.js"></script>
 		<script>
-			let nodeNames = JSON.parse(`<%- nodeNames %>`);;
-			let directed = `<%- directed %>` == "true";;
+			const directed = JSON.parse("<%- directed %>");
+			const nodeNames = JSON.parse(`<%- nodeNames %>`);
+			const weighted = JSON.parse("<%- weighted %>")
 		</script>
 	</head>
 	<body>
+		<!-- NAVBAR -->
 		<%- include("../../partials/navbar") %>
 
+		<!-- ADJACENCY MATRIX -->
 		<div class="table" id="table"></div>
 	</body>
 </html>
