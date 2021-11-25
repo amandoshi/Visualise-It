@@ -1,0 +1,68 @@
+.data_structure {
+	background-color: #eaeaea;
+	border-bottom: 1px solid #bbb;
+	height: 35%;
+}
+
+/* QUEUE/STACK/PQUEUE */
+.data_structure .single {
+	display: flex;
+	justify-content: center;
+	padding-top: 3%;
+}
+
+.data_structure .single p {
+	background: #f5f5f5;
+	margin: 0;
+	outline: 1px solid #bbb;
+	padding: 10px 0;
+	text-align: center;
+	width: 9.5%;
+}
+
+.data_structure .single p:first-child {
+	background-color: #e5e5e5;
+	border-radius: 5px 0 0 5px;
+}
+
+.data_structure .single p:last-child {
+	border-radius: 0 5px 5px 0;
+}
+
+/* DISTANCE TABLE */
+.data_structure .distance_table {
+	padding-top: 4%;
+}
+
+.data_structure .distance_table .row {
+	display: flex;
+	justify-content: center;
+}
+
+.data_structure .distance_table .cell {
+	background-color: #f5f5f5;
+	margin: 0;
+	outline: 1px solid #bbb;
+	padding: 10px 0;
+	text-align: center;
+	width: 9.5%;
+}
+
+/* DISTANCE TABLE - HEADER */
+.data_structure .distance_table .cell:first-child {
+	background-color: #e5e5e5;
+}
+
+/* DISTANCE TABLE - ROUNDED CORNERS */
+.data_structure .distance_table .row:first-child p:first-child {
+	border-radius: 5px 0 0 0;
+}
+.data_structure .distance_table .row:first-child p:last-child {
+	border-radius: 0 5px 0 0;
+}
+.data_structure .distance_table .row:last-child p:last-child {
+	border-radius: 0 0 5px 0;
+}
+.data_structure .distance_table .row:last-child p:first-child {
+	border-radius: 0 0 0 5px;
+}

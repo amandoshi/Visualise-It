@@ -1,0 +1,76 @@
+.traversal_form {
+	background-color: #fafafa;
+	border-bottom: 1px solid #bbb;
+	height: 40%;
+}
+
+/* SETTINGS */
+.traversal_form .type {
+	background-color: #f0f0f0;
+}
+
+.traversal_form .type,
+.traversal_form .speed {
+	display: flex;
+	justify-content: center;
+	padding: 2% 0;
+}
+
+.traversal_form .type p,
+.traversal_form .speed p {
+	background-color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: Arial, sans-serif;
+	margin: 0 4%;
+	outline: 1px solid #bbb;
+	padding: 9px 10px;
+	text-align: center;
+	transition: background-color 0.3s;
+	user-select: none;
+	width: 15%;
+}
+
+.traversal_form .type p:hover,
+.traversal_form .speed p:hover {
+	background-color: #e4e4e4;
+}
+
+.traversal_form .type p.active,
+.traversal_form .speed p.active {
+	background: #d0d0d0;
+}
+
+/* SELECT NODE */
+.traversal_form .node {
+	background-color: #f0f0f0;
+	display: flex;
+	justify-content: center;
+	padding: 1.5% 0;
+}
+
+.traversal_form .select_tag {
+	padding: 0 10%;
+}
+
+/* SUBMIT */
+.traversal_form .submit {
+	padding: 1.5% 0;
+	text-align: center;
+}
+
+.traversal_form .submit button {
+	background-color: #0088a9;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	outline: 1px solid #bbb;
+	padding: 8px 12px;
+	text-decoration: none;
+}
+
+.traversal_form .submit button:hover {
+	background-color: #01657e;
+}

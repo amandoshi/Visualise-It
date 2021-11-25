@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../partials/head") %>
+		<% title = "Algorithms" %>
+
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+		<link rel="stylesheet" href="/styles/information/algorithms.css">
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/partials/navbar.js"></script>
+	</head>
+	<body>
+		<!-- NAVBAR -->
+		<%- include("../partials/navbar") %>
+
+		<div class="input_containers">
+			<!-- BFS -->
+			<div class="container">
+				<p class="title">Breadth-first Search (BFS)</p>
+				<p class="information">
+					Breadth-first search (BFS) is an algorithm for traversing trees and graphs.
+					BFS is implemented using a queue data structure.
+					In a tree, if starting from the root, the algorithm will explore all nodes
+					in the present depth before moving to the next depth level.
+					BFS on an unweighted graph can identify the shortest path between two nodes, 
+					given a path exists.
+					On a weighted graph, BFS can find a path, if it exists, between two nodes.
+					However, the path is not necessarily the shortest one.
+				</p>
+			</div>
+			<!-- DFS -->
+			<div class="container">
+				<p class="title">Depth-first Search (DFS)</p>
+				<p class="information">
+					Depth-first search (DFS) is an algorithm for traversing trees and graphs,
+					similar to BFS.
+					DFS is implemented using a stack data structure.
+					In a tree, if starting from the root, the algorithm will continually traverse
+					down the tree. When it hits a dead end, it will back track identifies it finds a new path
+					to explore.
+					DFS on an unweighted graph will not produce the shortest path guaranteed.
+					On a weighted graph, DFS can find a path, if it exists, between two nodes.
+				</p>
+			</div>
+			<!-- DIJKSTRA -->
+			<div class="container">
+				<p class="title">Dijkstra</p>
+				<p class="information">
+					Dijkstra is an algorithm for traversing <b>weighted</b> trees and graphs.
+					Dijsktra is implemented using a minimum priority queue data structure, 
+					which in turn is implemented using a heap data structure.
+					Dijkstra will always find the shortest path between two nodes on a graph,
+					assuming a shortest path exists and the graph contains no negative edges.
+					The Dijkstra algorithm will need to traverse the entire graph before identifying the
+					shortest path, as the problem is intractable itself. The path is not an approximation,
+					but a guaranteed shortest path.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

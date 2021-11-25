@@ -1,0 +1,50 @@
+FUNCTION BFS(graph, startNode, targetNode)
+    // initialise required data structures
+    previousNodes <- Dictionary()
+    queue <- Queue()
+    visitedNodes <- Set()
+
+    // setup data structures
+    previousNodes.startNode <- startNode
+    queue.add(startNode)
+    visitedNodes.add(startNode)
+
+    targetNodeFound <- false
+
+    WHILE (queue.empty() IS false && targetNodeFound IS false)
+        currentNode <- queue.getNextItem()
+        neighbourNodes <- graph.getNeighborNodes(currentNode)
+
+        FOR (neighbourNode OF neighbourNodes)
+            // check if neighbour visited
+            IF (neighbourNode NOT IN visitedNodes) THEN
+                previousNodes.neighbourNode = currentNode
+                queue.add(neighbourNode)
+                visitedNodes.add(neighbourNode)
+
+                // check if target node is found
+                IF (neighbourNode == targetNode) THEN
+                    targetNodeFound <- true
+                    BREAK
+                ENDIF 
+            ENDIF
+        ENDFOR
+    ENDWHILE
+
+    // return empty path if target node is not found
+    IF (targetNodeFound IS false) THEN
+        RETURN []
+    ENDIF
+
+    // construct final path
+    finalPath <- [targetNode]
+    nextNode <- previousNodes.targetNode
+    finalPath.insertAtFront(nextNode)
+
+    WHILE (nextNode != startNode)
+        nextNode <- previousNodes.nextNode
+        finalPath.insertAtFront(nextNode)
+    ENDWHILE
+
+    RETURN finalPath;   
+ENDFUNCTION

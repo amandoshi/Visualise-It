@@ -1,0 +1,124 @@
+.select_tag {
+	height: 40px;
+	position: relative;
+	width: 200px;
+}
+
+/* SELECTED DIV */
+.select_tag .selected {
+	background-color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	height: 35px;
+	justify-content: space-between;
+	outline: 1px solid #bbb;
+	transition: background-color 0.3s ease;
+	user-select: none;
+}
+
+.select_tag .selected:hover {
+	background-color: #e4e4e4;
+}
+
+/* SELECTED OPTION */
+.select_tag .selected p {
+	margin: auto 0;
+	padding-left: 10px;
+	text-align: left;
+}
+
+/* SELECTED ARROW */
+.select_tag .selected img {
+	height: 40%;
+	margin: auto 0;
+	margin-right: 3%;
+	transition: transform 0.5s ease;
+}
+
+.select_tag .selected.active img {
+	transform: rotate(180deg);
+}
+
+/* OPTIONS CONTAINER */
+.select_tag .options_container {
+	border-radius: 5px;
+	margin-top: 10px;
+	opacity: 0;
+	outline: 1px solid #bbb;
+	overflow-y: hidden;
+}
+
+.select_tag .options_container:not(.active) {
+	max-height: 0;
+}
+
+.select_tag .options_container.active {
+	opacity: 1;
+	transition: all 0.3s ease 0s;
+}
+
+/* SEARCH BOX */
+.select_tag .search_box {
+	height: 35px;
+}
+
+.select_tag .search_box input {
+	border: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	text-indent: 15px;
+	width: 100%;
+}
+
+.select_tag .search_box input:focus {
+	outline: 0;
+}
+
+/* OPTIONS WRAPPER */
+.select_tag .options {
+	max-height: 0;
+	opacity: 0;
+	overflow-y: hidden;
+	transition: all 0.3s;
+}
+
+.select_tag .options_container.active .options {
+	max-height: 150px;
+	opacity: 1;
+	overflow-y: scroll;
+}
+
+.select_tag .options_container.active .options::-webkit-scrollbar {
+	background: #ddd;
+	border-radius: 0 0 5px 0;
+	width: 5px;
+}
+
+.select_tag .options_container.active .options::-webkit-scrollbar-thumb {
+	background: #525252;
+	border-radius: 0 0 5px 0;
+}
+
+/* OPTIONS */
+.select_tag .options_container .option {
+	background-color: #fcfafa;
+	border-bottom: 1px solid #bbb;
+	cursor: pointer;
+	font-family: arial, sans-serif;
+	font-size: 16px;
+	margin: 0;
+	padding: 6px;
+	user-select: none;
+	text-indent: 9px;
+	transition: background-color 0.4s;
+}
+
+.select_tag .options_container .option:hover {
+	background: #e4e4e4;
+}
+
+.select_tag .options_container .option.highlight {
+	background-color: #c9c9c9;
+}

@@ -1,0 +1,61 @@
+FUNCTION minPriority(a,b)
+    RETURN a.priority < b.priority
+ENDFUNCTION
+
+FUNCTION dijkstra(graph: Graph, startNode: int)
+    // initialise data structures
+    distanceTable <- Set()
+    minPQ <- MinPriorityQueue(minPriority)
+    visitedNodes <- Set()
+
+    distanceTable[startNode] <- {'distance': 0, 'previousNode': startNode}
+    FOR (i <- 0; i < graph.getLength(); i <- i + 1)
+        IF (i != startNode) THEN
+            distanceTable[i] <- {'distance': ∞, 'previousNode': NULL}
+        ENDIF
+    ENDFOR
+
+    minPQ.addItem(startNode, 0)
+    visitedNodes.addItem(startNode)
+
+    WHILE (NOT(minPQ.isEmpty()))
+        currentNode <- minPQ.removeItem()
+        neighbourNodes <- graph.getNeighbours(currentNode.value)
+
+        FOR (neighbourNode of NeighbourNodes) 
+            // visit and queue neighbour nodes
+            IF (NOT(visitedNodes.has(neighbourNode.value))) THEN
+                minPQ.addItem(neighbourNode.value, neighbourNode.weight)
+                visitedNodes.addItem(neighbourNode.value)
+            ENDIF
+
+            // calculate path lengths
+            alternatePath <- distanceTable[currentNode.value].distance + neighbourNode.weight
+            currentPath <- distanceTable[neighbourNode.value].distance
+            
+            // shortest path
+            IF (alternatePath < currentPath) THEN
+                distanceTable[neighbourNode.value].distance <- alternatePath
+                distanceTable[neighbourNode.value].previousNode <- currentNode.value
+            ENDIF
+        ENDFOR
+    ENDWHILE
+
+    RETURN distanceTable
+ENDFUNCTION
+
+FUNCTION dijkstraFinalPath(startNode: int, targetNode: int, distanceTable)
+    path <- Array()
+    path.addItem(targetNode)
+
+    nextNode <- distanceTable[targetNode].previousNode
+    path.insert(index <- 0, nextNode)
+
+    // generate path by backtracking
+    WHILE (nextNode != startNode)
+        nextNode <- distanceTable[nextNode].previousNode
+        path.insert(index <- 0, nextNode)
+    ENDWHILE
+
+    RETURN path
+ENDFUNCTION

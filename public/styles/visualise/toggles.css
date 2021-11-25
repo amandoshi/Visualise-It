@@ -1,0 +1,27 @@
+.toggles {
+	background-color: #fafafa;
+	height: 18%;
+	text-align: center;
+}
+
+/* BUTTONS */
+.toggles button {
+	background-color: #fff;
+	border: 0;
+	border-radius: 5px;
+	cursor: pointer;
+	height: 30%;
+	margin: 4% 2%;
+	outline: 1px solid #bbb;
+	transition: background-color 0.3s ease;
+	user-select: none;
+	width: 20%;
+}
+
+.toggles button:hover {
+	background-color: #e4e4e4;
+}
+
+.toggles button.active {
+	background-color: #d1d1d1;
+}

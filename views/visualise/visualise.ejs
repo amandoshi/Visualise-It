@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../partials/head") %>
+        <% title = "Visualiser" %>
+		
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+        <link rel="stylesheet" href="/styles/partials/selectTag.css">
+        <link rel="stylesheet" href="/styles/visualise/dataStructure.css">
+        <link rel="stylesheet" href="/styles/visualise/information.css">
+        <link rel="stylesheet" href="/styles/visualise/toggles.css">
+        <link rel="stylesheet" href="/styles/visualise/traversalForm.css">
+        <link rel="stylesheet" href="/styles/visualise/visualise.css">
+
+        <!-- DEPENDENCIES -->
+		<script src="/cytoscape/dist/cytoscape.min.js"></script>
+		<script src="/layout-base/layout-base.js"></script>
+		<script src="/cose-base/cose-base.js"></script>
+		<script src="/cytoscape-fcose/cytoscape-fcose.js"></script>
+        <script src="/swal/dist/sweetalert2.all.min.js"></script>
+
+        <!-- DATA STRUCTURES -->
+        <script src="/scripts/dataStructures/graph.js"></script>
+        <script src="/scripts/dataStructures/queue.js"></script>
+        <script src="/scripts/dataStructures/heap.js"></script>
+        <script src="/scripts/dataStructures/minPriorityQueue.js"></script>
+        <script src="/scripts/dataStructures/stack.js"></script>
+
+        <!-- PATHFINDING ALGORITHMS -->
+        <script src="/scripts/pathFinding/bfs.js"></script>
+        <script src="/scripts/pathFinding/dfs.js"></script>
+        <script src="/scripts/pathFinding/dijkstra.js"></script>
+
+        <!-- VISUALISATION CLASSES -->
+        <script src="/scripts/partials/selectTag.js"></script>
+        <script src="/scripts/visualise/visualiser.js"></script>
+
+        <!-- SCRIPTS -->
+        <script src="/scripts/partials/essentials.js"></script>
+		<script src="/scripts/partials/navbar.js"></script>
+        <script>
+            const matrix = JSON.parse(`<%- matrix %>`);
+            const nodeNames = JSON.parse(`<%- nodeNames %>`);
+            const weighted = JSON.parse("<%- weighted %>");
+        </script>
+        <script src="/scripts/visualise/visualise.js"></script>
+	</head>
+	<body>
+        <!-- NAVBAR -->
+		<%- include("../partials/navbar") %>
+
+        <div class="visualise_wrapper">
+            <!-- GRAPH CANVAS -->
+            <div class="graphCanvas" id="graphCanvas"></div>
+
+            <!-- CONTROLS -->
+            <div class="controls">
+                <!-- INFORMATION -->
+                <div class="information">
+                    <!-- ELEMENT TYPE -->
+					<div class="container">
+						<p class="label">Type</p>
+						<div class="value"  id="elementTypeLabel"></div>
+					</div>
+
+					<!-- ELEMENT ID -->
+					<div class="container">
+						<p class="label">Name</p>
+						<div class="value" id="elementNameLabel"></div>
+					</div>
+
+					<!-- EDGE WEIGHT -->
+					<div class="container">
+						<p class="label">Weight</p>
+						<div class="value" id="elementWeightLabel"></div>
+					</div>
+
+					<!-- VISITED ELEMENT -->
+					<div class="container">
+						<p class="label">Visited</p>
+						<div class="value" id="elementIsVisitedLabel"></div>
+					</div>
+
+					<!-- FINAL PATH ELEMENT -->
+					<div class="container">
+						<p class="label">Final Path</p>
+						<div class="value" id="elementIsFinalPathLabel"></div>
+					</div>
+                </div>
+
+                <!-- TRAVERSAL FORM -->
+                <div class="traversal_form">
+                    <!-- TYPE -->
+                    <div class="type">
+                        <p id="bfsTraversalToggle" value="0">BFS</p>
+                        <p id="dfsTraversalToggle" value="1">DFS</p>
+                        <p id="dijkstraTraversalToggle" value="2">Dijkstra</p>
+                    </div>
+
+                    <!-- SPEED -->
+                    <div class="speed">
+                        <p id="stepByStepToggle" timeStep="" value = "0">Step-by-Step</p>
+                        <p id="slowSpeedToggle" timeStep="1000" value = "1">Slow</p>
+                        <p id="mediumSpeedToggle" timeStep="500" value = "2">Medium</p>
+                        <p id="fastSpeedToggle" timeStep="100" value = "3">Fast</p>
+                    </div>
+
+                    <!-- NODES -->
+                    <div class="node">
+                        <div class="select_tag" id="startNodeSelectTag"></div>
+                        <div class="select_tag" id="targetNodeSelectTag"></div>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <div class="submit">
+                        <button id="submitTraversalForm">Traverse</button>
+                    </div>
+                </div>
+
+                <!-- DATA STRUCTURE -->
+                <div class="data_structure" id="dataStructure">
+                    <div class="single">
+                        <p>Queue</p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                        <p class="slot"></p>
+                    </div>
+
+                    <div class="distance_table">
+                        <div class="row">
+                            <p class="cell header">Node</p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                        </div>
+                        <div class="row">
+                            <p class="cell header">Distance</p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                        </div>
+                        <div class="row">
+                            <p class="cell header">Previous</p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                            <p class="cell"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOGGLES -->
+                <div class="toggles">
+                    <button id="exitTraversalButton">Exit Traversal</button>
+                    <button id="nodeNamesToggle">Toggle Node Names</button>
+                    <button id="weightValuesToggle">Toggle Weight Values</button>
+                    <button id="downloadGraphButton">Download Graph</button>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
