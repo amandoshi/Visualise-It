@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<!-- HEAD -->
-		<%- include("../../partials/head") %> <% title = "Node Names" %>
+		<%- include("../../partials/head") %>
+		<% title = "Node Names" %>
 
 		<title><%- title %></title>
 
@@ -13,13 +14,21 @@
 		<!-- SCRIPTS -->
 		<script src="/swal/dist/sweetalert2.all.min.js"></script>
 		<script src="/scripts/partials/navbar.js"></script>
+		<script src="/scripts/partials/essentials.js"></script>
+		<script src="/scripts/partials/parameters.js"></script>
 		<script src="/scripts/input/custom/nodeName.js"></script>
         <script>
 			const postUrl = "<%- postUrl %>";
         </script>
 	</head>
 	<body>
+		<!-- NAVBAR -->
 		<%- include("../../partials/navbar") %>
+
+		<!-- INFORMATION -->
+		<div class="information">
+			<p>Enter names for each node in graph. Node names can only contain alphaneumeric characters or integers.</p>
+		</div>
 
 		<!-- EDGE LIST -->
 		<div class="elements">
@@ -30,7 +39,7 @@
 				cols="5"
 				id="lineNumber"
 				readonly
-				rows="25"
+				rows="23"
 				wrap="off"
 				></textarea>
 				
@@ -41,7 +50,8 @@
 					id="nodeNames"
 					oninput="updateLineCount(this)"
 					onscroll="syncScroll()"
-					rows="25"
+					placeholder="eg. apple"
+					rows="23"
 					spellcheck="false"
 					wrap="off"
 				></textarea>
