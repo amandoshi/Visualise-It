@@ -1,3 +1,11 @@
+/**
+ * @const {Number} - maximum possible character length of node name that can be displayed
+ */
+const maxCharacterDisplayLength = 12;
+
+/**
+ * Setup and display adjacency matrix in HTML document
+ */
 function setupMatrix() {
 	// get matrix as object
 	const tableObject = document.getElementById("table");
@@ -6,15 +14,17 @@ function setupMatrix() {
 	let html = "";
 	html += tableHeadHtml();
 	html += tableBodyHtml();
-	html += `<p class="link"><a href="#">Visualise</a></p>`;
+	html += `<p class="link"><a href="JavaScript:submitMatrix()">Visualise</a></p>`;
 
 	// setup matrix
 	tableObject.innerHTML = html;
 	setTableWidth();
-
-	console.log(html);
 }
 
+/**
+ * Construct HTML string for table head
+ * @returns {String} - table head HTML string
+ */
 function tableHeadHtml() {
 	// open row
 	let html = `<div class="row first">`;
@@ -31,10 +41,14 @@ function tableHeadHtml() {
 		}
 
 		const id = `0-${i + 1}`;
-		const text = nodeNames[i];
+
+		let nodeName = nodeNames[i].substring(0, maxCharacterDisplayLength - 1);
+		if (nodeNames[i].length > maxCharacterDisplayLength - 1) {
+			nodeName += "…";
+		}
 
 		// cell
-		html += `<p class="${columnClass}" id="${id}">${text}</p>`;
+		html += `<p class="${columnClass}" id="${id}">${nodeName}</p>`;
 	}
 
 	// close row
@@ -43,6 +57,10 @@ function tableHeadHtml() {
 	return html;
 }
 
+/**
+ * Construct HTML string for table body
+ * @returns {String} - table body HTML string
+ */
 function tableBodyHtml() {
 	let html = "";
 
@@ -58,7 +76,12 @@ function tableBodyHtml() {
 
 		// node name cell
 		const nodeNameId = `${i + 1}-0`;
-		const nodeNameText = nodeNames[i];
+
+		let nodeNameText = nodeNames[i].substring(0, maxCharacterDisplayLength - 1);
+		if (nodeNames[i].length > maxCharacterDisplayLength - 1) {
+			nodeNameText += "…";
+		}
+
 		html += `<p class="column first" id="${nodeNameId}">${nodeNameText}</p>`;
 
 		// input cells
@@ -70,7 +93,7 @@ function tableBodyHtml() {
 			}
 			if (i == j) {
 				columnClass += " disabled";
-			} else if (directed && j < i) {
+			} else if (!directed && j < i) {
 				columnClass += " copy";
 			}
 
@@ -79,13 +102,13 @@ function tableBodyHtml() {
 
 			// oninput
 			let oninput = "";
-			if (directed && j > i) {
+			if (!directed && j > i) {
 				oninput += `javascript:cascadeInput(this)`;
 			}
 
 			// self-pointing edges
 			let readonly = "";
-			if (i == j || (directed && j < i)) {
+			if (i == j || (!directed && j < i)) {
 				readonly += "readonly";
 			}
 
@@ -111,6 +134,10 @@ function tableBodyHtml() {
 	return html;
 }
 
+/**
+ * Set the width of table
+ * Table width is dependent on number of cells in adjacency matrix
+ */
 function setTableWidth() {
 	// table properties
 	const borderWidth = 1;
@@ -124,9 +151,69 @@ function setTableWidth() {
 	addStyle(`.table { width:${width}px }`);
 }
 
+/**
+ * Copy value from one cell to complementary cell in table (create undirected edge)
+ * @param {Object} inputObject - reference to HTML cell in table
+ */
 function cascadeInput(inputObject) {
 	targetId = inputObject.id.split("-").reverse().join("-");
 	document.getElementById(targetId).value = inputObject.value;
+}
+
+/**
+ * Format check adjacency matrix
+ * Display error if invalid format
+ * Post adjacency matrix for visualisation if valid format
+ */
+function submitMatrix() {
+	// create matrix
+	let matrix = new Array(nodeNames.length);
+	for (let i = 0; i < nodeNames.length; i++) {
+		let row = new Array(nodeNames.length);
+		row.fill(0);
+		matrix[i] = row;
+	}
+
+	for (let i = 0; i < nodeNames.length; i++) {
+		for (let j = 0; j < nodeNames.length; j++) {
+			let cellWeight = document.getElementById(`${i + 1}-${j + 1}`).value;
+
+			// format check
+			if (!cellWeight) {
+				cellWeight = 0;
+			} else if (!isPositiveInteger(cellWeight)) {
+				let message = `Cell in row ${i + 1}, column ${j + 1} is invalid. `;
+				message += "Cells must contain positive integers.";
+
+				return alertError({
+					text: message,
+					title: "Invalid Cell Format!",
+				});
+			} else if (!weighted && cellWeight != 1) {
+				let message = `Cell in row ${i + 1}, column ${j + 1} is invalid. `;
+				message += "Unweighted graphs must have edge values of 0 or 1.";
+
+				return alertError({
+					text: message,
+					title: "Invalid Cell Format!",
+				});
+			} else {
+				cellWeight = parseInt(cellWeight);
+			}
+
+			matrix[i][j] = cellWeight;
+		}
+	}
+
+	// compile data
+	const data = {
+		directed,
+		weighted,
+		nodeNames: JSON.stringify(nodeNames),
+		matrix: JSON.stringify(matrix),
+	};
+
+	postToUrl(data, "/visualise");
 }
 
 window.addEventListener("load", setupMatrix);
