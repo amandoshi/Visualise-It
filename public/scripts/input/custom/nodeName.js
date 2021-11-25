@@ -1,5 +1,9 @@
 let lineCount = 1;
 
+/**
+ * Update line count of text area
+ * @param {Object} object - reference to HTML text area
+ */
 function updateLineCount(object) {
 	// get current line count
 	const currentLineCount = countLines(object.value);
@@ -11,6 +15,11 @@ function updateLineCount(object) {
 	}
 }
 
+/**
+ * Count number of lines in a text
+ * @param {String} text
+ * @returns {Number} - number of lines in text
+ */
 function countLines(text) {
 	if (text == "") {
 		return 1;
@@ -19,6 +28,9 @@ function countLines(text) {
 	}
 }
 
+/**
+ * Display line count in HTML document
+ */
 function fillLineCount() {
 	// get read-only textarea
 	const lineObject = document.getElementById("lineNumber");
@@ -33,6 +45,9 @@ function fillLineCount() {
 	lineObject.value = lineString;
 }
 
+/**
+ * Synchronise the scrolls of input textarea and line count textarea
+ */
 function syncScroll() {
 	// textarea objects
 	const lineObject = document.getElementById("lineNumber");
@@ -42,6 +57,10 @@ function syncScroll() {
 	lineObject.scrollTop = inputObject.scrollTop;
 }
 
+/**
+ * Format check node names
+ * Post node names and redirect to new page to input the graph
+ */
 function submit() {
 	// node name names
 	const names = document.getElementById("nodeNames").value.split("\n");
@@ -57,6 +76,19 @@ function submit() {
 				text: "Node name cannot be multiple words",
 				title: "Invalid node name...",
 			});
+		} else if (
+			nameSplit.length == 1 &&
+			nameSplit[0].length > maxNodeNameLength
+		) {
+			return alertError({
+				text: `Maximum node name length is ${maxNodeNameLength} characters.`,
+				title: "Invalid Node Name!",
+			});
+		} else if (!isWord(nameSplit[0])) {
+			return alertError({
+				text: `Node names must be alphanumeric.`,
+				title: "Invalid Node Name!",
+			});
 		} else if (nameSplit.length == 1) {
 			uniqueNames.add(nameSplit[0]);
 		}
@@ -68,6 +100,11 @@ function submit() {
 			text: "At least 2 node names must be entered",
 			title: "An error occured...",
 		});
+	} else if (uniqueNames.size > maxNumberOfNodes) {
+		return alertError({
+			text: `A maximum of ${maxNumberOfNodes} node names are allowed.`,
+			title: "Too Many Node Names!",
+		});
 	}
 
 	// send data
@@ -75,36 +112,7 @@ function submit() {
 	postToUrl(data, postUrl);
 }
 
-function alertError(message) {
-	return Swal.fire({
-		confirmButtonColor: "#0088a9",
-		icon: "error",
-		text: message.text,
-		title: message.title,
-	});
-}
-
-function postToUrl(data, url) {
-	// create form element
-	let form = document.createElement("form");
-	form.method = "post";
-	form.action = url;
-
-	// add data to form
-	for (const key in data) {
-		// create input element
-		let input = document.createElement("input");
-		input.type = "hidden";
-		input.name = key;
-		input.value = data[key];
-
-		// add input to form
-		form.appendChild(input);
-	}
-
-	// send data
-	document.body.appendChild(form);
-	form.submit();
-}
-
-window.addEventListener("load", fillLineCount);
+window.addEventListener("load", () => {
+	fillLineCount();
+	updateLineCount(document.getElementById("nodeNames"));
+});
