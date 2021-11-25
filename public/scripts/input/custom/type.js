@@ -1,15 +1,10 @@
 let directed, directedObj, undirectedObj;
 let weighted, weightedObj, unweightedObj;
 
+/**
+ * Update weighted and directed toggles, shown in HTML document, to current state
+ */
 function updateToggle() {
-	if (weighted) {
-		weightedObj.classList.add("selected");
-		unweightedObj.classList.remove("selected");
-	} else {
-		unweightedObj.classList.add("selected");
-		weightedObj.classList.remove("selected");
-	}
-
 	if (directed) {
 		directedObj.classList.add("selected");
 		undirectedObj.classList.remove("selected");
@@ -17,8 +12,22 @@ function updateToggle() {
 		undirectedObj.classList.add("selected");
 		directedObj.classList.remove("selected");
 	}
+
+	if (weighted) {
+		weightedObj.classList.add("selected");
+		unweightedObj.classList.remove("selected");
+	} else {
+		unweightedObj.classList.add("selected");
+		weightedObj.classList.remove("selected");
+	}
 }
 
+/**
+ * Set a graph property, one of [directed, weighted]
+ * @param {Boolean} state - true if graph directed/weighted,
+ * 							false if graph undirected/unweighted
+ * @param {String} type - graph parameter to set, one of [directed, weighted]
+ */
 function setToggle(state, type) {
 	if (type == "weighted") {
 		weighted = state;
@@ -27,34 +36,20 @@ function setToggle(state, type) {
 	}
 }
 
-function postToUrl(data, url) {
-	// create form element
-	let form = document.createElement("form");
-	form.method = "post";
-	form.action = url;
-
-	// add data to form
-	for (const key in data) {
-		// create input element
-		let input = document.createElement("input");
-		input.type = "hidden";
-		input.name = key;
-		input.value = data[key];
-
-		// add input to form
-		form.appendChild(input);
-	}
-
-	// send data
-	document.body.appendChild(form);
-	form.submit();
-}
-
+/**
+ * Post graph properties and redirect to new page
+ * @param {String} type
+ */
 function submit(type) {
 	const data = { directed, type, weighted };
 	postToUrl(data, "/input/custom");
 }
 
+/**
+ * Setup HTML page when loaded
+ * Setup toggles
+ * Add click listeners to toggles
+ */
 window.onload = () => {
 	// default values
 	directed = false;
