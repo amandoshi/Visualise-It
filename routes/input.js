@@ -14,7 +14,6 @@ router.get("/custom", (req, res) => {
 
 // custom:type - POST
 router.post("/custom", (req, res) => {
-	// store graph type in sessions
 	req.session.directed = req.body.directed;
 	req.session.weighted = req.body.weighted;
 
@@ -24,6 +23,10 @@ router.post("/custom", (req, res) => {
 
 // custom:edge list - GET
 router.get("/custom/edgeList", (req, res) => {
+	if (!req.session.directed || !req.session.weighted) {
+		return res.redirect("/");
+	}
+
 	res.render("input/custom/edgeList.ejs", {
 		directed: req.session.directed,
 		weighted: req.session.weighted,
@@ -32,6 +35,10 @@ router.get("/custom/edgeList", (req, res) => {
 
 // custom:adjacency list - GET
 router.get("/custom/adjacencyList", (req, res) => {
+	if (!req.session.directed || !req.session.weighted) {
+		return res.redirect("/");
+	}
+
 	res.render("input/custom/nodeName.ejs", {
 		postUrl: "/input/custom/adjacencyList",
 	});
@@ -39,7 +46,6 @@ router.get("/custom/adjacencyList", (req, res) => {
 
 // custom:adjacency list - POST
 router.post("/custom/adjacencyList", (req, res) => {
-	// store node names in sessions
 	req.session.nodeNames = req.body.names;
 
 	res.redirect("/input/custom/adjacencyList/graph");
@@ -47,13 +53,27 @@ router.post("/custom/adjacencyList", (req, res) => {
 
 // custom:adjacency list:graph - GET
 router.get("/custom/adjacencyList/graph", (req, res) => {
+	if (
+		!req.session.directed ||
+		!req.session.weighted ||
+		!req.session.nodeNames
+	) {
+		return res.redirect("/");
+	}
+
 	res.render("input/custom/adjacencyList.ejs", {
+		directed: req.session.directed,
 		nodeNames: req.session.nodeNames,
+		weighted: req.session.weighted,
 	});
 });
 
 // custom:adjacency matrix - GET
 router.get("/custom/adjacencyMatrix", (req, res) => {
+	if (!req.session.directed || !req.session.weighted) {
+		return res.redirect("/");
+	}
+
 	res.render("input/custom/nodeName.ejs", {
 		postUrl: "/input/custom/adjacencyMatrix",
 	});
@@ -61,7 +81,6 @@ router.get("/custom/adjacencyMatrix", (req, res) => {
 
 // custom:adjacency matrix - POST
 router.post("/custom/adjacencyMatrix", (req, res) => {
-	// store node names in sessions
 	req.session.nodeNames = req.body.names;
 
 	res.redirect("/input/custom/adjacencyMatrix/graph");
@@ -69,9 +88,18 @@ router.post("/custom/adjacencyMatrix", (req, res) => {
 
 // custom:adjacency matrix:graph - GET
 router.get("/custom/adjacencyMatrix/graph", (req, res) => {
+	if (
+		!req.session.directed ||
+		!req.session.weighted ||
+		!req.session.nodeNames
+	) {
+		return res.redirect("/");
+	}
+
 	res.render("input/custom/adjacencyMatrix", {
 		directed: req.session.directed,
 		nodeNames: req.session.nodeNames,
+		weighted: req.session.weighted,
 	});
 });
 
@@ -85,5 +113,5 @@ router.get("/upload", (req, res) => {
 	res.render("input/upload/csv.ejs");
 });
 
-// export routes
+// export all routes
 module.exports = router;
