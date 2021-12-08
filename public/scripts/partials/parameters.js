@@ -1,5 +1,5 @@
 /**
- * @const {Number} - maximum possible edge weight fo grpah
+ * @const {Number} - maximum possible edge weight for graph
  */
 const maxEdgeWeight = 100000;
 
