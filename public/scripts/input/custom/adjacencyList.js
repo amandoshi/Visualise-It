@@ -92,6 +92,14 @@ function submit() {
 						text: message,
 						title: "Invalid Connection Format!",
 					});
+				} else if (parseInt(connection[1]) > maxEdgeWeight) {
+					let message = `Row ${i + 1} contains an invalid edge connection. `;
+					message += `The maximum edge weight of ${maxEdgeWeight} has been exceeded.`;
+
+					return alertError({
+						text: message,
+						title: "Invalid Connection Format!",
+					});
 				} else if (!nodeNames.includes(connection[0])) {
 					let message = `Row ${i + 1} contains an invalid edge connection. `;
 					message += "Node does not exist.";
