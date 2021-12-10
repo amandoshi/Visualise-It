@@ -197,6 +197,14 @@ function submitMatrix() {
 					text: message,
 					title: "Invalid Cell Format!",
 				});
+			} else if (parseInt(cellWeight) > maxEdgeWeight) {
+				let message = `Cell in row ${i + 1}, column ${j + 1} is invalid. `;
+				message += `Cell weight exceeds the maximum possible edge weight of ${maxEdgeWeight}`;
+
+				return alertError({
+					text: message,
+					title: "Invalid Cell Format!",
+				});
 			} else {
 				cellWeight = parseInt(cellWeight);
 			}
