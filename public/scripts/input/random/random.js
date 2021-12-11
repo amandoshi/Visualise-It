@@ -114,44 +114,57 @@ function randomGraphMatrix(numberOfNodes) {
 		matrix[i] = matrixRow;
 	}
 
-	// random connection for first node
+	// declare data structures
+	let visitedNodes = new Array();
+	let unvisitedNodes = new Array();
+
+	// initilaise data structure
+	visitedNodes.push(0);
+	for (let i = 1; i < numberOfNodes; i++) {
+		unvisitedNodes.push(i);
+	}
+
 	for (let i = 0; i < numberOfNodes; i++) {
-		// connect node to previous nodes
+		// select random unvisited node
+		let selectedNode = 0;
 		if (i != 0) {
-			const connectedNode = randomInteger(0, i - 1);
+			const randomUnvisitedIndex = randomInteger(0, unvisitedNodes.length - 1);
+			selectedNode = unvisitedNodes.splice(randomUnvisitedIndex, 1)[0];
 
-			let weight;
+			// edge connection with random visited node
+			const randomVisitedIndex = randomInteger(0, visitedNodes.length - 1);
+
+			// generate edge weight
+			let edgeWeight = 1;
 			if (weighted) {
-				weight = Math.ceil(Math.random() * numberOfNodes);
-			} else {
-				weight = 1;
+				edgeWeight = Math.ceil(Math.random() * numberOfNodes);
 			}
 
+			matrix[selectedNode][visitedNodes[randomVisitedIndex]] = edgeWeight;
 			if (!directed || Math.random() < 0.3) {
-				matrix[connectedNode][i] = weight;
+				matrix[visitedNodes[randomVisitedIndex]][selectedNode] = edgeWeight;
 			}
 
-			matrix[i][connectedNode] = weight;
+			// visit selected node
+			visitedNodes.push(selectedNode);
 		}
 
-		// link node to new node
-		const connectedNode = randomInteger(0, numberOfNodes - 1);
+		const randomIndex = randomInteger(0, numberOfNodes - 1);
 
-		if (connectedNode != i) {
-			let weight;
-			if (weighted) {
-				weight = Math.ceil(Math.random() * numberOfNodes);
-			} else {
-				weight = 1;
-			}
+		// self-pointing node
+		if (randomIndex == selectedNode) {
+			continue;
+		}
 
-			// create undirected (two-way) edge if graph is undirected
-			// 30% chance of undirected edge if graph is directed
-			if (!directed || Math.random() < 0.3) {
-				matrix[connectedNode][i] = weight;
-			}
+		// generate edge weight
+		let edgeWeight = 1;
+		if (weighted) {
+			edgeWeight = Math.ceil(Math.random() * numberOfNodes);
+		}
 
-			matrix[i][connectedNode] = weight;
+		matrix[selectedNode][randomIndex] = edgeWeight;
+		if (!directed || Math.random() < 0.3) {
+			matrix[randomIndex][selectedNode] = edgeWeight;
 		}
 	}
 
