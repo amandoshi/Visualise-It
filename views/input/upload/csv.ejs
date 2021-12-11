@@ -22,6 +22,41 @@
 		<!-- NAVBAR -->
 		<%- include("../../partials/navbar") %>
 
+		<!-- INFORMATION -->
+		<div class="information">
+			<!-- DESCRIPTION -->
+			<p>
+				The first row of the CSV file must contain a list of unique node names. 
+				The remaining rows must contain an adjacency matrix. 
+				A sample CSV file containing a directed and weighted graph is shown below.
+			</p>
+			<br>
+			
+			<!-- SAMPLE CSV FILE CONTENTS -->
+			<div class="table">
+				<div class="row">
+					<p class="cell">apple</p>
+					<p class="cell">banana</p>
+					<p class="cell">cucumber</p>
+				</div>
+				<div class="row">
+					<p class="cell">0</p>
+					<p class="cell">1</p>
+					<p class="cell">1</p>
+				</div>
+				<div class="row">
+					<p class="cell">5</p>
+					<p class="cell">0</p>
+					<p class="cell">0</p>
+				</div>
+				<div class="row">
+					<p class="cell">2</p>
+					<p class="cell">1</p>
+					<p class="cell">0</p>
+				</div>
+			</div>
+		</div>
+
 		<!-- UPLOAD -->
 		<div class="upload">
 			<input type="file" id="file" />
