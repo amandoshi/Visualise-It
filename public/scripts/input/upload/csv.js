@@ -88,7 +88,8 @@ function submit() {
  * Check if format of data from csv file is valid
  * @param {String[][]} csvData - node name (row 1), adjacency matrix (row 2-n)
  * @returns {Object.message} - string; error message if CSV format is invalid
- * @returns {Object.result} - boolean; true if csv file is in the correct format, false if csv file is not in the correct format
+ * @returns {Object.result} - boolean; true if csv file is in the correct format,
+ * 									   false if csv file is not in the correct format
  */
 function checkCsvFormat(csvData) {
 	// graph information
