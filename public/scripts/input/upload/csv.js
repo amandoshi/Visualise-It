@@ -60,9 +60,9 @@ function submit() {
 
 		// check file format
 		const validFormat = checkCsvFormat(csvData);
-		if (!validFormat) {
+		if (!validFormat.result) {
 			return alertError({
-				text: "CSV file format is invalid",
+				text: validFormat.message,
 				title: "Format Error",
 			});
 		}
@@ -87,7 +87,8 @@ function submit() {
 /**
  * Check if format of data from csv file is valid
  * @param {String[][]} csvData - node name (row 1), adjacency matrix (row 2-n)
- * @returns {Boolean} - true if csv file is in the correct format, false if csv file is not in the correct format
+ * @returns {Object.message} - string; error message if CSV format is invalid
+ * @returns {Object.result} - boolean; true if csv file is in the correct format, false if csv file is not in the correct format
  */
 function checkCsvFormat(csvData) {
 	// graph information
@@ -95,17 +96,31 @@ function checkCsvFormat(csvData) {
 	let matrixSize = csvData.length - 1;
 
 	if (matrixSize > maxNumberOfNodes) {
-		return false;
+		return {
+			message: `Number of nodes exceeds maximum of ${maxNumberOfNodes} nodes`,
+			result: false,
+		};
 	}
 
 	// check node names format
-	if (csvData[0].length != matrixSize) {
-		return false;
+	const nodeNames = new Set(csvData[0]);
+	if (nodeNames.size != matrixSize) {
+		return {
+			message: "Invalid number of unique node names.",
+			result: false,
+		};
 	}
 
 	for (let i = 0; i < matrixSize; i++) {
 		if (!isWord(csvData[0][i]) || csvData[0][i].length > maxNodeNameLength) {
-			return false;
+			let message = "Invalid node name format. ";
+			message += "Node names must only contain alphanumeric characters and ";
+			message += `must not exceed the maximum length of ${maxNodeNameLength} characters.`;
+
+			return {
+				message,
+				result: false,
+			};
 		}
 	}
 
@@ -113,17 +128,29 @@ function checkCsvFormat(csvData) {
 	for (let i = 1; i < csvData.length; i++) {
 		// row length
 		if (csvData[i].length != matrixSize) {
-			return false;
+			return {
+				message: "Invalid adjacency matrix format.",
+				result: false,
+			};
 		}
 
 		// cell data
 		for (let j = 0; j < matrixSize; j++) {
 			if (!isInteger(csvData[i][j])) {
-				return false;
+				return {
+					message: "Edge weights must be positive integers.",
+					result: false,
+				};
 			} else if (i - 1 == j && csvData[i][j] != 0) {
-				return false;
+				return {
+					message: "Graph must not contain self-pointing nodes.",
+					result: false,
+				};
 			} else if (parseInt(csvData[i][j]) > maxEdgeWeight) {
-				return false;
+				return {
+					message: `Edge weights cannot exceed maximum value of ${maxEdgeWeight}.`,
+					result: false,
+				};
 			}
 
 			// update graph information
@@ -133,7 +160,10 @@ function checkCsvFormat(csvData) {
 		}
 	}
 
-	return true;
+	return {
+		message: "",
+		result: true,
+	};
 }
 
 window.addEventListener("load", () => {
