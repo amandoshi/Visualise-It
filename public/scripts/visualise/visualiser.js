@@ -805,7 +805,7 @@ class Visualiser {
 	}
 
 	/**
-	 * @param {string} value - set traversal type
+	 * @param {number} value - set traversal type
 	 */
 	set traversalType(value) {
 		this.#traversalType = value;
