@@ -192,10 +192,10 @@ class Graph {
 	/**
 	 * Set adjacency matrix of graph using adjacency list
 	 * @param {Number[][]} edges - edges, if graph is unweighted
-	 * @param {Array[][]} edges - edges and weight of edges, if graph is weighted
-	 * @param {Number} edges[] - node in connection, if graph is unweighted
-	 * @param {Number} edges[][0] - node in connection, if graph is weighted
-	 * @param {Number} edges[][1] - weight in connection, if graph is weighted
+	 * @param {Number[][][]} edges - edges and weight of edges, if graph is weighted
+	 * @param {Number} edges[][] - node in connection, if graph is unweighted
+	 * @param {Number} edges[][][0] - node in connection, if graph is weighted
+	 * @param {Number} edges[][][1] - weight in connection, if graph is weighted
 	 */
 	set adjacencyList(edges) {
 		this.#setupGraphMatrix();
