@@ -314,10 +314,15 @@ class Visualiser {
 		}
 
 		try {
-			// get current distance table
-			const data = JSON.stringify(
-				this.#previousStates[this.#apparentStep].distanceTable
-			);
+			let data;
+			if (this.#traversalSpeed == 0) {
+				// get current distance table
+				data = JSON.stringify(
+					this.#previousStates[this.#apparentStep].distanceTable
+				);
+			} else {
+				data = JSON.stringify(this.#traversal.distanceTable);
+			}
 
 			// open new tab and redirect
 			const url = `/visualise/distanceTable?data=${data}`;
