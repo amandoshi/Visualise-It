@@ -24,5 +24,17 @@ router.post("/", (req, res) => {
 	res.redirect("/visualise");
 });
 
+// distance table - GET
+router.get("/distanceTable", (req, res) => {
+	if (!req.query.data || !req.session.nodeNames) {
+		return res.redirect("/");
+	}
+
+	res.render("visualise/distanceTable", {
+		distanceTable: req.query.data,
+		nodeNames: req.session.nodeNames,
+	});
+});
+
 // export routes
 module.exports = router;

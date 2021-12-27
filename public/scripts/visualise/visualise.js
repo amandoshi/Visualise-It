@@ -9,6 +9,9 @@ function setupToggles() {
 	nodeNamesToggleTag = document.getElementById("nodeNamesToggle");
 	weightValuesToggleTag = document.getElementById("weightValuesToggle");
 	downloadGraphButton = document.getElementById("downloadGraphButton");
+	displayDistanceTableButton = document.getElementById(
+		"displayDistanceTableButton"
+	);
 
 	nodeNamesToggleTag.onclick = () => {
 		nodeNamesToggleTag.classList.toggle("active");
@@ -18,6 +21,10 @@ function setupToggles() {
 	weightValuesToggleTag.onclick = () => {
 		weightValuesToggleTag.classList.toggle("active");
 		visualiser.cyToggleEdgeWeights();
+	};
+
+	displayDistanceTableButton.onclick = () => {
+		visualiser.displayFullDistanceTable();
 	};
 
 	downloadGraphButton.onclick = downloadGraph;

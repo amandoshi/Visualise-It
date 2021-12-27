@@ -305,6 +305,29 @@ class Visualiser {
 	}
 
 	/**
+	 * Display complete distance table in new tab
+	 */
+	displayFullDistanceTable() {
+		// check for active Dijkstra traversal
+		if (!(this.#traversal && this.#traversal.constructor.name == "Dijkstra")) {
+			return;
+		}
+
+		try {
+			// get current distance table
+			const data = JSON.stringify(
+				this.#previousStates[this.#apparentStep].distanceTable
+			);
+
+			// open new tab and redirect
+			const url = `/visualise/distanceTable?data=${data}`;
+			window.open(url);
+		} catch (error) {
+			return;
+		}
+	}
+
+	/**
 	 * Clear current traversal algorithm
 	 * Reset graph - remove highlighting
 	 * Reset datastructures

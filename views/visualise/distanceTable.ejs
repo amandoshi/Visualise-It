@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- HEAD -->
+		<%- include("../partials/head") %>
+        <% title = "Distance Table" %>
+		
+		<title><%- title %></title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="/styles/partials/navbar.css" />
+        <link rel="stylesheet" href="/styles/visualise/distanceTable.css">
+
+		<!-- SCRIPTS -->
+		<script src="/scripts/partials/navbar.js"></script>
+        <script src="/scripts/visualise/distanceTable.js"></script>
+        <script>
+            const distanceTable = JSON.parse(`<%- distanceTable %>`);
+            const nodeNames = JSON.parse(`<%- nodeNames %>`);
+
+            window.addEventListener("load", setupDistanceTable);
+        </script>
+	</head>
+	<body>
+		<!-- NAVBAR -->
+		<%- include("../partials/navbar") %>
+
+        <!-- DISTANCE TABLE -->
+        <div class="distance_table" id="distanceTable"></div>
+	</body>
+</html>

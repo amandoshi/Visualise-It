@@ -1,0 +1,76 @@
+/* DISTANCE TABLE */
+.distance_table {
+	border: 1px solid #a5a5a5;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 3vh;
+	overflow: hidden;
+	user-select: none;
+	width: 800px;
+}
+
+/* ROW */
+.row {
+	display: flex;
+}
+
+/* COLUMN */
+.row p {
+	background-color: #f3f3f3;
+	font-family: monospace;
+	font-size: 18px;
+	text-align: center;
+	margin: 0;
+	padding: 5px;
+	width: calc(100% / 3);
+}
+
+/* HEAD ROW COLUMN  */
+.row.first p {
+	background-color: #e4e4e4;
+	border-bottom: 2px solid #a5a5a5;
+}
+
+.row.first p:not(:last-child) {
+	border-right: 1px solid #a5a5a5;
+}
+
+/* BODY ROW COLUMN */
+.row:not(.first) p:not(:last-child) {
+	border-right: 1px dashed #a5a5a5;
+}
+
+.row:not(.last):not(.first) p {
+	border-bottom: 1px dashed #a5a5a5;
+}
+
+/* TABLE CORNERS */
+.row.first p:first-child {
+	border-radius: 5px 0 0 0;
+}
+.row.first p:last-child {
+	border-radius: 0 5px 0 0;
+}
+.row.last p:last-child {
+	border-radius: 0 0 5px 0;
+}
+.row.last p:first-child {
+	border-radius: 0 0 0 5px;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+	height: 14px;
+	width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-clip: padding-box;
+	background-color: #aaaaaa;
+	border: 4px solid rgba(0, 0, 0, 0);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+	background: rgba(0, 0, 0, 0);
+}
