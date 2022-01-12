@@ -1,9 +1,4 @@
 /**
- * @const {Number} - maximum possible character length of node name that can be displayed
- */
-const maxCharacterDisplayLength = 10;
-
-/**
  * @var {Graph}
  */
 let graph;
@@ -27,8 +22,8 @@ function setupAdjacencyTable() {
 		html += `<div class="${rowClass}">`;
 
 		// label
-		let nodeName = nodeNames[i].substring(0, maxCharacterDisplayLength - 1);
-		if (nodeNames[i].length > maxCharacterDisplayLength - 1) {
+		let nodeName = nodeNames[i].substring(0, maxNodeNameLength);
+		if (nodeNames[i].length > maxNodeNameLength) {
 			nodeName += "…";
 		}
 		html += `<p class="column 1">${nodeName}</p>`;
