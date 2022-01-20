@@ -93,12 +93,18 @@ function submit() {
  */
 function checkCsvFormat(csvData) {
 	// graph information
+	const minNumberOfNodes = 2;
 	weighted = false;
 	let matrixSize = csvData.length - 1;
 
 	if (matrixSize > maxNumberOfNodes) {
 		return {
 			message: `Number of nodes exceeds maximum of ${maxNumberOfNodes} nodes`,
+			result: false,
+		};
+	} else if (matrixSize < minNumberOfNodes) {
+		return {
+			message: `Number of nodes in file does not meet the required ${minNumberOfNodes} nodes for graph visualisation`,
 			result: false,
 		};
 	}
