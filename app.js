@@ -65,6 +65,12 @@ app.use("/visualise", require("./routes/visualise"));
 app.use("*", require("./routes/404"));
 
 // listen for requests
-app.listen(3000, () => {
-	console.log("Listening on port 3000: http://localhost:3000");
-});
+// app.listen(3000, () => {
+// 	console.log("Listening on port 3000: http://localhost:3000");
+// });
+
+// Establishing the port
+const PORT = process.env.PORT || 5000;
+
+// Executing the server on given port number
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
