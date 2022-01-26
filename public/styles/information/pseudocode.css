@@ -33,16 +33,6 @@
 	white-space: pre;
 }
 
-/* .container p green {
-	color: green;
-}
-
-.container p blue {
-	color: #0088a9;
-	user-select: none;
-} */
-
-/* TEST */
 .container p span.green {
 	color: green;
 }

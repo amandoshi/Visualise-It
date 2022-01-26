@@ -21,20 +21,16 @@ function loadPseudocode() {
 function displayPseudocode(type, pseudocode) {
 	let html = "";
 
-	console.log(pseudocode);
-
 	pseudocode = pseudocode.split("\r\n");
 	for (let i = 0; i < pseudocode.length; i++) {
 		// two character line number
 		const lineNumber = `00${i + 1}`.slice(-2);
 
 		// colored line number
-		// html += `<blue>${lineNumber} </blue>`;
 		html += `<span class="blue">${lineNumber} </span>`;
 
 		if (pseudocode[i].includes("//")) {
 			// colored commented code
-			// html += `<green>${pseudocode[i]}</green><br>`;
 			html += `<span class="green">${pseudocode[i]}</span><br>`;
 		} else {
 			html += `${pseudocode[i]}<br>`;
