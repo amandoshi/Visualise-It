@@ -21,6 +21,8 @@ function loadPseudocode() {
 function displayPseudocode(type, pseudocode) {
 	let html = "";
 
+	console.log(pseudocode);
+
 	pseudocode = pseudocode.split("\r\n");
 	for (let i = 0; i < pseudocode.length; i++) {
 		// two character line number
