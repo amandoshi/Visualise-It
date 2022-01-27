@@ -23,6 +23,8 @@
 
 /* SELECTED OPTION */
 .select_tag .selected p {
+	font-family: Arial, sans-serif;
+	font-size: 0.9em;
 	margin: auto 0;
 	padding-left: 10px;
 	text-align: left;
