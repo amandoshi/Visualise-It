@@ -1,4 +1,4 @@
-<h1>VISUALISE IT<h1>
+<h1>VISUALISE IT</h1>
 
 This tool helps students learn about basic graph theory and traversal algorithms. Students can create their own graphs by manipulating graph data 
 structures (via edge lists, adjacency lists, and adjacency matrices).
