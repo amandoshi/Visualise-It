@@ -1,4 +1,4 @@
-<h1>VISUALISE IT</h1>
+<h1>Visualise-It</h1>
 
 This tool helps students learn about basic graph theory and traversal algorithms. Students can create their own graphs via edge lists, adjacency lists, 
 and adjacency matrices). Available traversal algorithms are Breadth-first Search, Depth-first Search, and Dijkstra's Shortest Path. While these algorithms
