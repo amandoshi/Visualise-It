@@ -9,4 +9,4 @@ This web tool helps students learn about basic graph theory and traversal algori
 and adjacency matrices). Available traversal algorithms are Breadth-first Search, Depth-first Search, and Dijkstra's Shortest Path. While these algorithms
 run, the interface displays the associated data structure (e.g., stacks, min/max/prioirity queues, and distance tables). <br>
 
-Technicals: NodeJS, Cytoscape (graph visualization)
+Frameworks/Languages: JS, NodeJS, Cytoscape (graph visualization)
