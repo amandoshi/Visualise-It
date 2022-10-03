@@ -4,7 +4,7 @@ This tool helps students learn about basic graph theory and traversal algorithms
 and adjacency matrices). Available traversal algorithms are Breadth-first Search, Depth-first Search, and Dijkstra's Shortest Path. While these algorithms
 run, the interface displays the associated data structure (e.g., stacks, min/max/prioirity queues, and distance tables).
 
-<b>Note</b>: Web Application is best suited for Chrome.
+<b>Note</b>: Web Application is best suited for Chrome. <br>
 Link: https://visualise-it.herokuapp.com/
 
 <img width="1484" alt="image" src="https://user-images.githubusercontent.com/54029493/193501179-a06eb502-d0ee-4b6e-98fc-ff7693ea88b0.png">
