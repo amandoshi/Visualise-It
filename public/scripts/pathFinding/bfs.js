@@ -56,6 +56,11 @@ class BFS {
 			// pause method to display updated queue
 			yield;
 
+			if (currentNode == this.#targetNode) {
+				this.#targetFound = true;
+				return;
+			}
+
 			for (let i = 0; i < neighbourNodes.length; i++) {
 				const neighbourNode = neighbourNodes[i].node;
 
@@ -70,13 +75,6 @@ class BFS {
 					};
 
 					yield data;
-
-					// traversal complete
-					if (neighbourNode == this.#targetNode) {
-						this.#targetFound = true;
-
-						return;
-					}
 				}
 			}
 		}
